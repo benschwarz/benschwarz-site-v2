@@ -1,0 +1,23 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title Ben Schwarz's site
+    = include_stylesheets :global
+    
+    = csrf_meta_tag
+  %body{:id => params[:action]}
+    = yield
+    %footer
+      %small
+        ©
+        %a{:href => "/about"} Ben Schwarz
+        2009—
+    /  
+      %nav
+        %ul
+          %li
+            %a{:href => "/"} Home
+          %li
+            %a{:href => "/about", :rel => "author"} About
+  = include_javascripts :global

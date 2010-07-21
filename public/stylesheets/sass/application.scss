@@ -1,0 +1,144 @@
+@import 'reset';
+@import 'typography';
+@import 'css3';
+
+$background_colour: #F6F6F6; 
+$light_green: #7AC943;
+
+body { font-size: 62.5%; text-rendering: optimizeLegibility; line-height: 1.5; margin: 3em auto; width: 760px; background-color: $background_colour; }
+
+@mixin column($count: 1, $width: 60px, $gutter: 20px) {
+	width: $width * $count;
+  margin-right: $gutter;
+  float: left;
+}
+
+@mixin button {
+	@include border-radius(0.25em);
+	display: block;
+	padding: 0.25em 0.7em;
+	background-color: $light_green;
+	color: white;
+	font-size: 1.4em;
+	font-style: italic;
+	text-decoration: none;
+	
+	-webkit-transition-property: background-color, color;
+	-webkit-transition-duration: 250ms;
+	-webkit-transition-timing-function: ease-in;
+	
+	&:hover{
+		background-color: black;
+		color: white;
+	}
+}
+
+@mixin flag { 
+	@include border-radius(0.25em);
+	@include background-size(cover);
+	
+	margin: 0.7em 0 0 -5.25em;
+	padding: 0.5em 1em 0.5em 0.7em;
+	position: absolute;
+	width: 3em;
+	display: block;
+	font-size: 1.2em;
+	color: white;
+	font-family: Helvetica, Arial;
+	font-weight: bold;
+	line-height: 1em;
+	text-align: center;
+	text-shadow: 1px 1px 0 $light_green;
+	background-image: url('/images/date-bubble.png');
+	background-repeat: no-repeat;
+	background-position: bottom right;
+}
+
+@mixin clearfix { 
+	&:after { content: '★'; visibility: hidden; height: 0; display: block; clear: both; }
+}
+
+body#home {
+	> article:first-child { margin-top: 0em; }
+	> article:last-of-type { border: 0; }
+  > article {
+		overflow: auto;
+		margin-top: 2em;
+		padding-left: 0.2em;
+		border-bottom: 0.3em solid $light_green;
+		position: relative;
+
+    header {
+			a {
+				display: block; text-decoration: none;
+
+				time {
+					@include flag;
+					text-transform: uppercase;
+					span { font-size: 2em; line-height: 1em; }
+				}
+				
+				h1 {
+					width: 1em;
+					@include primary_header;
+					&:after { content: '—'; }
+				}
+				&:hover h1 { color: $light_green; }
+
+				h2 { 
+					margin-top: 2em;
+					width: 30em;
+					@include secondry_header; 
+				}
+			}
+		}
+		p {
+			margin-top: 1.5em;
+			@include body_copy;
+		}
+		.csscolumns & p { 
+			width: auto;
+			@include column-count(2);
+			@include column-gap(1em);
+		}
+		a.continue-reading { @include button; float: right; margin: 1em 0; }
+  }
+}
+
+body#about {
+	header {
+		h1 { @include primary_header; @include column(6); }
+		h2 { @include secondry_header; clear: left; margin-top: 2em; }
+		h3 { @include flag; margin: 0.6em 0 0 -2.25em; padding: 0.5em 0.4em 0.5em 0.25em; font-size: 2.5em; width: auto; }
+	}
+	section#bio {
+		@include clearfix; 
+		padding-bottom: 2em; 
+		border-bottom: 0.3em solid $light_green;
+		margin-bottom: 2em;
+		
+		p { @include body_copy; margin-top: 1.5em; }
+		.csscolumns & p { 
+			width: auto;
+			@include column-count(2);
+			@include column-gap(1em);
+		}
+	}
+	aside {
+		overflow: auto;
+		section#professional-process {
+			@include column(8);
+
+			h1 { @include thirdly_header; } 
+			p { @include body_copy; width: auto; margin-top: 1em; }
+		}
+		section#colophon { 
+			@include column(3);
+
+			margin-top: 4.3em;
+			p { font-size: 1.1em; color: #898989; font-style: italic; }
+		}
+	}
+}
+
+body > footer { clear: left; margin: 2em 0; }

@@ -1,0 +1,245 @@
+/* HTML5 */
+header, footer, article, section, aside, nav, menu, figure {
+  display: block; }
+
+/* Resets */
+body, h1, h2, h3, h4, h5, h6, p, a, ul, ol, dt, dd, table, caption, th, td, fieldset, legend, blockquote {
+  font-weight: normal;
+  margin: 0;
+  padding: 0;
+  color: inherit;
+  list-style-type: none; }
+
+a img, form, legend {
+  border: 0; }
+
+fieldset, abbr {
+  border: none; }
+
+@font-face {
+  font-family: 'AlteHaasGrotesk';
+  src: url("/fonts/altehaasgroteskbold-webfont.eot");
+  src: local("☺"), url("/fonts/embed/altehaasgroteskbold-webfont.woff") format("woff"), url("/fonts/embed/altehaasgroteskbold-webfont.ttf") format("truetype"), url("/fonts/embed/altehaasgroteskbold-webfont.svg#webfontaU8b4LrX") format("svg");
+  font-weight: bold;
+  font-style: normal; }
+
+body {
+  font-size: 62.5%;
+  text-rendering: optimizeLegibility;
+  line-height: 1.5;
+  margin: 3em auto;
+  width: 760px;
+  background-color: #f6f6f6; }
+
+body#home > article:first-child {
+  margin-top: 0em; }
+body#home > article:last-of-type {
+  border: 0; }
+body#home > article {
+  overflow: auto;
+  margin-top: 2em;
+  padding-left: 0.2em;
+  border-bottom: 0.3em solid #7ac943;
+  position: relative; }
+  body#home > article header a {
+    display: block;
+    text-decoration: none; }
+    body#home > article header a time {
+      -webkit-border-radius: 0.25em;
+      -moz-border-radius: 0.25em;
+      -ms-border-radius: 0.25em;
+      -o-border-radius: 0.25em;
+      border-radius: 0.25em;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      margin: 0.7em 0 0 -5.25em;
+      padding: 0.5em 1em 0.5em 0.7em;
+      position: absolute;
+      width: 3em;
+      display: block;
+      font-size: 1.2em;
+      color: white;
+      font-family: Helvetica, Arial;
+      font-weight: bold;
+      line-height: 1em;
+      text-align: center;
+      text-shadow: 1px 1px 0 #7ac943;
+      background-image: url("/images/date-bubble.png");
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      text-transform: uppercase; }
+      body#home > article header a time span {
+        font-size: 2em;
+        line-height: 1em; }
+    body#home > article header a h1 {
+      width: 1em;
+      font-family: 'AlteHaasGrotesk', Helvetica, Arial, sans-serif;
+      font-weight: bold;
+      color: #4D4D4D;
+      line-height: 1em;
+      font-size: 7.2em;
+      text-shadow: 1px 1px 0 #f6f6f6; }
+      body#home > article header a h1:after {
+        content: '—'; }
+    body#home > article header a:hover h1 {
+      color: #7ac943; }
+    body#home > article header a h2 {
+      margin-top: 2em;
+      width: 30em;
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 2.1em;
+      color: #4D4D4D;
+      text-shadow: 1px 1px 0 white;
+      width: 33em; }
+  body#home > article p {
+    margin-top: 1.5em;
+    font-family: Georgia, serif;
+    font-size: 1.6em;
+    width: 33em;
+    color: #666; }
+  .csscolumns body#home > article p {
+    width: auto;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    -ms-column-count: 2;
+    -o-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 1em;
+    -moz-column-gap: 1em;
+    -ms-column-gap: 1em;
+    -o-column-gap: 1em;
+    column-gap: 1em; }
+  body#home > article a.continue-reading {
+    -webkit-border-radius: 0.25em;
+    -moz-border-radius: 0.25em;
+    -ms-border-radius: 0.25em;
+    -o-border-radius: 0.25em;
+    border-radius: 0.25em;
+    display: block;
+    padding: 0.25em 0.7em;
+    background-color: #7ac943;
+    color: white;
+    font-size: 1.4em;
+    font-style: italic;
+    text-decoration: none;
+    -webkit-transition-property: background-color, color;
+    -webkit-transition-duration: 250ms;
+    -webkit-transition-timing-function: ease-in;
+    float: right;
+    margin: 1em 0; }
+    body#home > article a.continue-reading:hover {
+      background-color: black;
+      color: white; }
+
+body#about header h1 {
+  font-family: 'AlteHaasGrotesk', Helvetica, Arial, sans-serif;
+  font-weight: bold;
+  color: #4D4D4D;
+  line-height: 1em;
+  font-size: 7.2em;
+  text-shadow: 1px 1px 0 #f6f6f6;
+  width: 360px;
+  margin-right: 20px;
+  float: left; }
+body#about header h2 {
+  font-family: Georgia, serif;
+  font-style: italic;
+  font-size: 2.1em;
+  color: #4D4D4D;
+  text-shadow: 1px 1px 0 white;
+  width: 33em;
+  clear: left;
+  margin-top: 2em; }
+body#about header h3 {
+  -webkit-border-radius: 0.25em;
+  -moz-border-radius: 0.25em;
+  -ms-border-radius: 0.25em;
+  -o-border-radius: 0.25em;
+  border-radius: 0.25em;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin: 0.7em 0 0 -5.25em;
+  padding: 0.5em 1em 0.5em 0.7em;
+  position: absolute;
+  width: 3em;
+  display: block;
+  font-size: 1.2em;
+  color: white;
+  font-family: Helvetica, Arial;
+  font-weight: bold;
+  line-height: 1em;
+  text-align: center;
+  text-shadow: 1px 1px 0 #7ac943;
+  background-image: url("/images/date-bubble.png");
+  background-repeat: no-repeat;
+  background-position: bottom right;
+  margin: 0.6em 0 0 -2.25em;
+  padding: 0.5em 0.4em 0.5em 0.25em;
+  font-size: 2.5em;
+  width: auto; }
+body#about section#bio {
+  padding-bottom: 2em;
+  border-bottom: 0.3em solid #7ac943;
+  margin-bottom: 2em; }
+  body#about section#bio:after {
+    content: '★';
+    visibility: hidden;
+    height: 0;
+    display: block;
+    clear: both; }
+  body#about section#bio p {
+    font-family: Georgia, serif;
+    font-size: 1.6em;
+    width: 33em;
+    color: #666;
+    margin-top: 1.5em; }
+  .csscolumns body#about section#bio p {
+    width: auto;
+    -webkit-column-count: 2;
+    -moz-column-count: 2;
+    -ms-column-count: 2;
+    -o-column-count: 2;
+    column-count: 2;
+    -webkit-column-gap: 1em;
+    -moz-column-gap: 1em;
+    -ms-column-gap: 1em;
+    -o-column-gap: 1em;
+    column-gap: 1em; }
+body#about aside {
+  overflow: auto; }
+  body#about aside section#professional-process {
+    width: 480px;
+    margin-right: 20px;
+    float: left; }
+    body#about aside section#professional-process h1 {
+      font-family: Georgia, serif;
+      text-transform: uppercase;
+      font-size: 1.4em;
+      letter-spacing: 0.1em;
+      color: #4D4D4D;
+      text-shadow: 1px 1px 0 white; }
+    body#about aside section#professional-process p {
+      font-family: Georgia, serif;
+      font-size: 1.6em;
+      width: 33em;
+      color: #666;
+      width: auto;
+      margin-top: 1em; }
+  body#about aside section#colophon {
+    width: 180px;
+    margin-right: 20px;
+    float: left;
+    margin-top: 4.3em; }
+    body#about aside section#colophon p {
+      font-size: 1.1em;
+      color: #898989;
+      font-style: italic; }
+
+body > footer {
+  clear: left;
+  margin: 2em 0; }

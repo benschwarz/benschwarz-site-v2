@@ -1,0 +1,6 @@
+@font-face {
+  font-family: 'AlteHaasGrotesk';
+  src: url("/fonts/altehaasgroteskbold-webfont.eot");
+  src: local("☺"), url("/fonts/embed/altehaasgroteskbold-webfont.woff") format("woff"), url("/fonts/embed/altehaasgroteskbold-webfont.ttf") format("truetype"), url("/fonts/embed/altehaasgroteskbold-webfont.svg#webfontaU8b4LrX") format("svg");
+  font-weight: bold;
+  font-style: normal; }

@@ -1,0 +1,8 @@
+embed_assets: on
+package_assets: always
+javascripts:
+  global:
+    - public/javascripts/*
+stylesheets:
+  global:
+    - public/stylesheets/application.css

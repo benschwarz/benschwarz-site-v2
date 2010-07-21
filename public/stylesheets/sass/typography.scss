@@ -1,0 +1,44 @@
+@font-face {
+	font-family: 'AlteHaasGrotesk';
+	src: url('/fonts/altehaasgroteskbold-webfont.eot');
+	src: local('☺'), 
+		url('/fonts/embed/altehaasgroteskbold-webfont.woff') format('woff'), 
+		url('/fonts/embed/altehaasgroteskbold-webfont.ttf') format('truetype'), 
+		url('/fonts/embed/altehaasgroteskbold-webfont.svg#webfontaU8b4LrX') format('svg');
+	font-weight: bold;
+	font-style: normal;
+}
+
+@mixin primary_header {
+	font-family: 'AlteHaasGrotesk', Helvetica, Arial, sans-serif; 
+	font-weight: bold; 
+	color: #4D4D4D; 
+	line-height: 1em; 
+	font-size: 7.2em;
+	text-shadow: 1px 1px 0 $background_colour;
+}
+
+@mixin secondry_header {
+	font-family: Georgia, serif; 
+	font-style: italic;
+	font-size: 2.1em;
+	color: #4D4D4D;
+	text-shadow: 1px 1px 0 white;
+	width: 33em;
+}
+
+@mixin thirdly_header {
+	font-family: Georgia, serif;
+	text-transform: uppercase;
+	font-size: 1.4em;
+	letter-spacing: 0.1em;
+	color: #4D4D4D;
+	text-shadow: 1px 1px 0 white;
+}
+
+@mixin body_copy { 
+	font-family: Georgia, serif;
+	font-size: 1.6em;
+	width: 33em;
+	color: #666;
+}
