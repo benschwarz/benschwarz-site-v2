@@ -11,6 +11,14 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; line-height: 1.5; m
 	width: $width * $count;
   margin-right: $gutter;
   float: left;
+	&:last-of-type { margin-right: 0; }
+}
+
+@mixin alternate_column($count: 1, $width: 238px, $gutter: 20px) {
+	width: $width * $count;
+	margin-right: $gutter;
+	float: left;
+	&:last-of-type { margin-right: 0; }
 }
 
 @mixin button {
@@ -62,15 +70,16 @@ body#home {
 	> article:first-child { margin-top: 0em; }
 	> article:last-of-type { border: 0; }
   > article {
-		overflow: auto;
+		@include clearfix;
 		margin-top: 2em;
 		padding-left: 0.2em;
 		border-bottom: 0.3em solid $light_green;
 		position: relative;
 
     header {
+			overflow: auto;
 			a {
-				display: block; text-decoration: none;
+			 	display: block; text-decoration: none;
 
 				time {
 					@include flag;
@@ -84,17 +93,18 @@ body#home {
 					&:after { content: '—'; }
 				}
 				&:hover h1 { color: $light_green; }
-
-				h2 { 
-					margin-top: 2em;
-					width: 30em;
-					@include secondry_header; 
-				}
+			}
+			
+			h2 { 
+				margin-top: 2em;
+				@include secondry_header; 
+				@include alternate_column(2);
 			}
 		}
 		p {
 			margin-top: 1.5em;
 			@include body_copy;
+			clear: left;
 		}
 		.csscolumns & p { 
 			width: auto;
@@ -107,8 +117,9 @@ body#home {
 
 body#about {
 	header {
+		hgroup { overflow: auto; }
 		h1 { @include primary_header; @include column(6); }
-		h2 { @include secondry_header; clear: left; margin-top: 2em; }
+		h2 { @include secondry_header; @include alternate_column(2); clear: left; margin-top: 1em; }
 		h3 { @include flag; margin: 0.6em 0 0 -2.25em; padding: 0.5em 0.4em 0.5em 0.25em; font-size: 2.5em; width: auto; }
 	}
 	section#bio {
@@ -117,7 +128,7 @@ body#about {
 		border-bottom: 0.3em solid $light_green;
 		margin-bottom: 2em;
 		
-		p { @include body_copy; margin-top: 1.5em; }
+		p { @include body_copy; margin-top: 1em; }
 		.csscolumns & p { 
 			width: auto;
 			@include column-count(2);
@@ -127,18 +138,32 @@ body#about {
 	aside {
 		overflow: auto;
 		section#professional-process {
-			@include column(8);
+			@include alternate_column(2);
 
 			h1 { @include thirdly_header; } 
 			p { @include body_copy; width: auto; margin-top: 1em; }
 		}
 		section#colophon { 
-			@include column(3);
+			@include alternate_column(1);
 
 			margin-top: 4.3em;
-			p { font-size: 1.1em; color: #898989; font-style: italic; }
+			p { font-size: 1.2em; color: #898989; font-style: italic; }
 		}
 	}
 }
 
-body > footer { clear: left; margin: 2em 0; }
+body > footer { 
+	position: relative; clear: left; margin: 2em 0;
+	
+	small { color: #666; } 
+	small a { text-decoration: none; border-bottom: 1px solid #666; }
+	
+	nav {
+		position: absolute;
+		top: 0;
+		right: 0;
+		
+		ul li { display: inline; margin-right: 2em; color: #ababab; }
+		ul li a:visited { text-decoration: none; border-bottom: 1px dotted #bababa; }
+	}
+}
