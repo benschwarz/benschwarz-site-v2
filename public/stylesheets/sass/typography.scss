@@ -14,21 +14,20 @@
 	font-weight: bold; 
 	color: #4D4D4D; 
 	line-height: 1em; 
-	font-size: 7.2em;
+	font-size: 6.5em;
 	text-shadow: 1px 1px 0 $background_colour;
 }
 
 @mixin secondry_header {
-	font-family: Georgia, serif; 
+	font-family: Palatino, "Palatino Linotype", serif; 
 	font-style: italic;
 	font-size: 2.1em;
 	color: #4D4D4D;
-	text-shadow: 1px 1px 0 white;
 	width: 33em;
 }
 
 @mixin thirdly_header {
-	font-family: Georgia, serif;
+	font-family: Palatino, "Palatino Linotype", serif;
 	text-transform: uppercase;
 	font-size: 1.4em;
 	letter-spacing: 0.1em;
@@ -37,7 +36,7 @@
 }
 
 @mixin body_copy { 
-	font-family: Georgia, serif;
+	font-family: Palatino, "Palatino Linotype", serif;
 	font-size: 1.6em;
 	width: 33em;
 	color: #666;
