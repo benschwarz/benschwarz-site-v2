@@ -1,0 +1,7 @@
+%h1 Articles archives
+%nav
+  %ol
+    - for article in @articles
+      %li
+        =link_to article.title, article_path(article)
+      

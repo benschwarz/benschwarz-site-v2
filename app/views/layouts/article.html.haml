@@ -1,0 +1,28 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %title
+      = @article.title
+      by Ben Schwarz
+    %link{:rel => "stylesheet", :href => "/stylesheets/application.css"}
+    
+    = csrf_meta_tag
+  %body.article{:id => params[:action]}
+    = yield
+    %footer
+      %small
+        ©
+        %a{:href => "/about"} Ben Schwarz
+        2009—  
+      %nav
+        %ul
+          %li
+            %a{:href => "/"} Home
+          %li
+            %a{:href => "/about", :rel => "author"} About
+          %li
+            %a{:href => "http://twitter.com/benschwarz", :rel => "external"} Twitter
+          %li
+            %a{:href => "http://github.com/benschwarz", :rel => "external"} Github
+  %script{:src => "/javascripts/modernizr.js"}
