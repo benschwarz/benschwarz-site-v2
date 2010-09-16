@@ -7,8 +7,6 @@ class ArticlesController < ApplicationController
   
   def show
     @article = Article[params[:id]]
-    fresh_when :etag => @article
-    
     render :template => "../articles/#{params[:id]}", :layout => "article"
   end
 end
