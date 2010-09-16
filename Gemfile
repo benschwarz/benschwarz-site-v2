@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'thin'
-gem 'rails', '3.0.0.rc'
+gem 'rails', '3.0.0'
 
 gem 'haml'
 gem 'high_voltage'
