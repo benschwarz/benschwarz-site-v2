@@ -5,7 +5,7 @@
 $background_colour: #F6F6F6; 
 $light_green: #8EDD50;
 
-body { font-size: 62.5%; text-rendering: optimizeLegibility; line-height: 1.5; margin: 3em auto; width: 760px; background-color: $background_colour; }
+body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; line-height: 1.5; margin: 3em auto; width: 760px; background-color: $background_colour; }
 
 @mixin column($count: 1, $width: 60px, $gutter: 20px) {
 	width: $width * $count;
@@ -14,11 +14,8 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; line-height: 1.5; m
 	&:last-of-type { margin-right: 0; }
 }
 
-@mixin alternate_column($count: 1, $width: 238px, $gutter: 20px) {
-	width: $width * $count;
-	margin-right: $gutter;
-	float: left;
-	&:last-of-type { margin-right: 0; }
+@mixin skip-column($count: 1, $width: 80px) { 
+	margin-left: $count * $width;
 }
 
 @mixin button {
@@ -66,6 +63,15 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; line-height: 1.5; m
 	&:after { content: '★'; visibility: hidden; height: 0; display: block; clear: both; }
 }
 
+@mixin section_header { 
+	position: relative;
+	border-top: 1px solid $light_green;
+	
+	> h1 { margin: -0.8em auto 0 auto; text-align: center; @include thirdly_header; }
+	> h1 span { background-color: $background-colour; padding: 0 0.75em; }
+	
+}
+
 body#about {
 	header {
 		hgroup { overflow: auto; }
@@ -86,9 +92,52 @@ body#about {
 			@include column-gap(1em);
 		}
 	}
+	
+	section#articles {
+		@include section_header; margin: 2em 0; padding: 0 0 1em 0;
+		
+		article {
+			@include clearfix; margin: 1.5em 0;
+			
+			a { text-decoration: none; }
+			h1 { 
+				font-size: 2.4em;
+				@include secondry_header; 
+				&:hover { text-decoration: underline }
+			}
+			h2 { @include body_copy; width: 23em; margin: 0.6em 0 0 20px; }
+		}
+	}
+	section#presentations { 
+		@include clearfix; 
+		@include section_header; 
+		margin: 2em 0; padding: 0 0 1em 0;
+		
+		> dl { margin: 0 auto; }
+		
+		dt { font-size: 1.4em; color: #4D4D4D; font-style: italic; border: 1px solid red; } 
+		
+		
+		
+		
+		dd { margin: -1em 0 3em 10em; padding-left: 2em; background-repeat: no-repeat; background-position: 0 center; }
+		
+		dd.slides { background-image: url("/images/slides.png"); } 
+		dd.video { background-image: url("/images/video.png"); }
+		dd dd { @include body_copy; }
+		
+		a { text-decoration: none; }
+		a:hover { text-decoration: underline; }
+	}
+	
 	section#meta {
+		@include clearfix; @include section_header; margin: 2em 0; padding: 0 0 1em 0;
+		
+		section#contact { @include column(6); }
+		section#external { @include column(6); }
+		
 		p { @include body_copy; width: auto; margin-top: 1em; }
-		a[href^="mailto"] { @include button; display: inline-block; float: right; }
+		a[href^="mailto"] { @include button; float: right; background-image: url("/images/envelope.png"); background-repeat: no-repeat; background-position: 90% center; padding-right: 2em; font-weight: bold; }
 	}
 	
 }
@@ -106,7 +155,7 @@ body > footer {
 		right: 0;
 		font-size: 1.2em;
 		
-		ul li { display: inline; margin-right: 2em; color: #ababab; }
-		ul li a:visited { text-decoration: none; border-bottom: 1px dotted #bababa; }
+		a { color: #4d4d4d; }
+		a:visited { text-decoration: none; border-bottom: 1px dotted #bababa; }
 	}
 }
