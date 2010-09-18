@@ -1,17 +1,15 @@
 !!!
-%html{:lang => "en"}
+%html{lang: "en"}
   %head
-    %meta{:charset => "utf-8"}
+    %meta{charset: "utf-8"}
     %title Ben Schwarz's site
-    %link{:rel => "stylesheet", :href => "/stylesheets/application.css"}
-    
+    %link{rel: "stylesheet", href: "/stylesheets/application.css"}
+    %script{src: "/javascripts/modernizr.js"}
     = csrf_meta_tag
-  %body{:id => params[:action]}
+  %body{id: params[:action]}
     = yield
     %footer
-      %small
-        ©
-        %a{:href => "/about"} Ben Schwarz
-        2009—  
+      %small © Ben Schwarz 2009—  
       %nav
-        %a{:href => "http://twitter.com/benschwarz", :rel => "external"} Follow me on twitter
+        %a{href: "http://twitter.com/benschwarz", rel: "external"} Follow me on twitter
+    %script{src: "/javascripts/application.js"}

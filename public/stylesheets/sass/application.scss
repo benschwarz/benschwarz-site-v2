@@ -40,16 +40,17 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smooth
 
 @mixin flag { 
 	@include border-radius(0.25em);
+	border-bottom-right-radius: 0;
 	@include background-size(cover);
 	
-	margin: 0.7em 0 0 -5.25em;
-	padding: 0.5em 1em 0.5em 0.7em;
+	font-size: 2.4em; 
+	margin: 0.3em 0 0 -2.25em;
+	padding: 0.5em 0.4em 0.5em 0.25em;
+	
 	position: absolute;
-	width: 3em;
 	display: block;
-	font-size: 1em;
 	color: white;
-	font-family: Helvetica, Arial;
+	font-family: Helvetica, Arial, sans-serif;
 	font-weight: bold;
 	line-height: 1em;
 	text-align: center;
@@ -63,13 +64,26 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smooth
 	&:after { content: '★'; visibility: hidden; height: 0; display: block; clear: both; }
 }
 
-@mixin section_header { 
+@mixin section_header {
 	position: relative;
 	border-top: 1px solid $light_green;
 	
 	> h1 { margin: -0.8em auto 0 auto; text-align: center; @include thirdly_header; }
 	> h1 span { background-color: $background-colour; padding: 0 0.75em; }
+}
+
+@mixin chronological_list {
+	dl { margin-top: 3em; }
+	dt { 
+		@include skip-column(1);
+		font-size: 1.4em; 
+		color: #4D4D4D; 
+		font-style: italic;
+		position: absolute;
+	}
 	
+	dl dl dt { @include skip-column(3); }
+	dl dl dd { @include skip-column(5); }
 }
 
 body#about {
@@ -77,85 +91,113 @@ body#about {
 		hgroup { overflow: auto; }
 		h1 { @include primary_header; @include column(6); }
 		h2 { @include secondry_header; clear: left; margin-top: 1em; }
-		h3 { @include flag; margin: 0.4em 0 0 -2.25em; padding: 0.5em 0.4em 0.5em 0.25em; font-size: 2.5em; width: auto; }
+		h3 { @include flag; }
 		img { margin-left: 20px; } /* Makes up for the h1 column losing its margin */
 	}
+	
 	section#bio {
 		@include clearfix; 
 		padding-bottom: 2em; 
 		margin-bottom: 2em;
 		
-		p { @include body_copy; margin-top: 1em; }
-		.csscolumns & p { 
-			width: auto;
+		p { 
+			@include body_copy; 
 			@include column-count(2);
 			@include column-gap(1em);
+			
+			margin-top: 1em;
 		}
+
+		.csscolumns & p { width: auto; }
 	}
 	
 	section#articles {
-		@include section_header; margin: 2em 0; padding: 0 0 1em 0;
+		@include chronological_list;
+		@include section_header; 
+		padding-bottom: 2em; 
+		margin-bottom: 2em;
 		
 		article {
-			@include clearfix; margin: 1.5em 0;
-			
+			margin-bottom: 2em;
 			a { text-decoration: none; }
-			h1 { 
-				font-size: 2.4em;
-				@include secondry_header; 
+			h1 {
+				@include secondry_header; 				
 				&:hover { text-decoration: underline }
 			}
-			h2 { @include body_copy; width: 23em; margin: 0.6em 0 0 20px; }
+			h2 { @include body_copy; width: 23em; }
 		}
 	}
+	
 	section#presentations { 
-		@include clearfix; 
 		@include section_header; 
-		margin: 2em 0; padding: 0 0 1em 0;
+		@include chronological_list;
+		padding-bottom: 2em; 
+		margin-bottom: 2em;
 		
-		> dl { margin: 0 auto; }
+		dd a { @include body_copy; padding-left: 2em; }
 		
-		dt { font-size: 1.4em; color: #4D4D4D; font-style: italic; border: 1px solid red; } 
-		
-		
-		
-		
-		dd { margin: -1em 0 3em 10em; padding-left: 2em; background-repeat: no-repeat; background-position: 0 center; }
-		
+		dd[class] { background-repeat: no-repeat; background-position: 0 center; }
 		dd.slides { background-image: url("/images/slides.png"); } 
 		dd.video { background-image: url("/images/video.png"); }
-		dd dd { @include body_copy; }
 		
-		a { text-decoration: none; }
-		a:hover { text-decoration: underline; }
+		a { 
+			color: #4d4d4d;
+			text-decoration: none;
+			-webkit-transition-property: text-shadow;
+			-webkit-transition-duration: 100ms;
+
+			&:hover { text-decoration: underline; text-shadow: 0 0 1px rgba(0, 0, 0, 0.7); }
+		}
 	}
 	
 	section#meta {
-		@include clearfix; @include section_header; margin: 2em 0; padding: 0 0 1em 0;
-		
+		@include clearfix; 
+		@include section_header; 
+		margin-bottom: 2em;
+
 		section#contact { @include column(6); }
 		section#external { @include column(6); }
 		
 		p { @include body_copy; width: auto; margin-top: 1em; }
-		a[href^="mailto"] { @include button; float: right; background-image: url("/images/envelope.png"); background-repeat: no-repeat; background-position: 90% center; padding-right: 2em; font-weight: bold; }
+		
+		a[href^="mailto"] { 
+			@include button; 
+			@include skip-column; 
+			margin-top: 1em;
+			float: left;
+			background-image: url("/images/envelope.png"); 
+			background-repeat: no-repeat; 
+			background-position: 90% center; 
+			padding-right: 2em; 
+			font-weight: bold; 
+		}
 	}
 	
 }
 
 body > footer { 
 	font-style: italic;
-	position: relative; clear: left; padding: 1em 0; border-top: 0.3em solid $light_green;
+	position: relative; 
+	clear: left; 
+	padding: 1em 0; 
+	border-top: 0.3em solid $light_green;
 	
-	small { color: #666; font-size: 1.2em; } 
-	small a { text-decoration: none; border-bottom: 1px solid #666; }
-	
+	small { color: #333; font-size: 1.2em; }
+
 	nav {
 		position: absolute;
 		top: 1em;
 		right: 0;
 		font-size: 1.2em;
 		
-		a { color: #4d4d4d; }
-		a:visited { text-decoration: none; border-bottom: 1px dotted #bababa; }
+		a { 
+			color: #4d4d4d;
+			text-decoration: none;
+			-webkit-transition-property: text-shadow;
+			-webkit-transition-duration: 100ms;
+
+			&:hover { text-decoration: underline; text-shadow: 0 0 1px rgba(0, 0, 0, 0.7); }
+		}
+		
 	}
 }
