@@ -1,42 +1,10 @@
 @import 'reset';
 @import 'typography';
 @import 'css3';
+@import 'columns';
 
 $background_colour: #F6F6F6; 
 $light_green: #8EDD50;
-
-body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; line-height: 1.5; margin: 3em auto; width: 760px; background-color: $background_colour; }
-
-@mixin column($count: 1, $width: 60px, $gutter: 20px) {
-	width: $width * $count;
-  margin-right: $gutter;
-  float: left;
-	&:last-of-type { margin-right: 0; }
-}
-
-@mixin skip-column($count: 1, $width: 80px) { 
-	margin-left: $count * $width;
-}
-
-@mixin button {
-	@include border-radius(0.25em);
-	display: block;
-	padding: 0.25em 0.7em;
-	background-color: $light_green;
-	color: white;
-	font-size: 1.4em;
-	font-style: italic;
-	text-decoration: none;
-	
-	-webkit-transition-property: background-color, color;
-	-webkit-transition-duration: 250ms;
-	-webkit-transition-timing-function: ease-in;
-	
-	&:hover{
-		background-color: #5a9b2d;
-		color: white;
-	}
-}
 
 @mixin flag { 
 	@include border-radius(0.25em);
@@ -44,7 +12,7 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smooth
 	@include background-size(cover);
 	
 	font-size: 2.4em; 
-	margin: 0.3em 0 0 -2.25em;
+	margin: 0.5em 0 0 -3em;
 	padding: 0.5em 0.4em 0.5em 0.25em;
 	
 	position: absolute;
@@ -61,51 +29,70 @@ body { font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smooth
 }
 
 @mixin clearfix { 
-	&:after { content: '★'; visibility: hidden; height: 0; display: block; clear: both; }
+	&:after { content: '✔'; visibility: hidden; height: 0; display: block; clear: both; }
 }
 
 @mixin section_header {
-	position: relative;
-	border-top: 1px solid $light_green;
-	
-	> h1 { margin: -0.8em auto 0 auto; text-align: center; @include thirdly_header; }
-	> h1 span { background-color: $background-colour; padding: 0 0.75em; }
+	header {
+		position: relative;
+		width: 102%;
+		margin-left: -1%;
+		border-top: 1px solid $light_green;
+		
+		> h1 { 
+			margin: -0.8em auto 0 auto; 
+			text-align: center;
+			font-family: Palatino, "Palatino Linotype", Book Antiqua, serif;
+			font-style: italic; 
+			font-size: 1.9em; 
+			color: #333;
+		}
+		> h1 span { background-color: $background-colour; padding: 0 0.75em; }
+	}
 }
 
 @mixin chronological_list {
-	dl { margin-top: 3em; }
-	dt { 
-		@include skip-column(1);
-		font-size: 1.4em; 
-		color: #4D4D4D; 
+	> dl { margin-top: 3em; }
+	dl dl { margin-top: -2.2em; }
+	dt {
+		@include skip-column(7);
+		font-size: 1.5em; 
+		line-height: 1.5em;
 		font-style: italic;
-		position: absolute;
+		color: #777;
 	}
-	
-	dl dl dt { @include skip-column(3); }
-	dl dl dd { @include skip-column(5); }
+	dl dl dt { @include skip-column(5); @include column-width(2);  }
 }
 
+body { @include column-width(10); font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; line-height: 1.5; margin: 3em auto; background-color: $background_colour; }
+
 body#about {
-	header {
-		hgroup { overflow: auto; }
-		h1 { @include primary_header; @include column(6); }
-		h2 { @include secondry_header; clear: left; margin-top: 1em; }
+	> header {
+		h1 { @include primary_header; @include column(5); @include column-width(5); margin-bottom: 0.2em; }
+		h2 { @include secondry_header; clear: left; margin-top: 0.7em; }
 		h3 { @include flag; }
-		img { margin-left: 20px; } /* Makes up for the h1 column losing its margin */
+		figure { 
+			@include column(5);
+			@include column-width(5);
+			margin-left: 1.5em;
+			figcaption { display: none; }
+		}
+	}
+	
+	section#bio, section#articles, section#meta { 
+		@include clearfix; 
+		@include section_header;
+		margin-bottom: 2em;
+		padding-bottom: 2em;
 	}
 	
 	section#bio {
-		@include clearfix; 
-		padding-bottom: 2em; 
-		margin-bottom: 2em;
-		
 		p { 
 			@include body_copy; 
 			@include column-count(2);
 			@include column-gap(1em);
 			
-			margin-top: 1em;
+			margin-top: 0.7em;
 		}
 
 		.csscolumns & p { width: auto; }
@@ -113,91 +100,180 @@ body#about {
 	
 	section#articles {
 		@include chronological_list;
-		@include section_header; 
-		padding-bottom: 2em; 
-		margin-bottom: 2em;
 		
 		article {
-			margin-bottom: 2em;
+			@include column-width(5);
+			
+			margin-top: -3em;
+			margin-bottom: 5em;
+			
 			a { text-decoration: none; }
-			h1 {
-				@include secondry_header; 				
-				&:hover { text-decoration: underline }
+					
+			h1 { 
+				@include secondry_header; 
+				border-bottom: 1px solid transparent; 
+				-webkit-transition-property: border;
+				-webkit-transition-duration: 200ms;
+				-webkit-transition-timing-function: ease-in;
+				display: inline;
 			}
-			h2 { @include body_copy; width: 23em; }
+			&:hover h1 { border-bottom: 1px solid #9c9c9c; }
+			
+			h2 { @include body_copy; @include column-width(5); }
 		}
 	}
 	
-	section#presentations { 
+	section#meta {	
+		section#contact, section#external { 
+			@include column(5); 
+			@include column-width(5);
+			margin-top: 3em;
+			
+			h1 { @include thirdly_header; }
+		}
+		p { @include body_copy; width: auto; margin-top: 1em; }
+	}
+	
+	section#events { 
 		@include section_header; 
-		@include chronological_list;
+		@include clearfix;
+		
 		padding-bottom: 2em; 
-		margin-bottom: 2em;
-		
-		dd a { @include body_copy; padding-left: 2em; }
-		
-		dd[class] { background-repeat: no-repeat; background-position: 0 center; }
-		dd.slides { background-image: url("/images/slides.png"); } 
-		dd.video { background-image: url("/images/video.png"); }
+		margin: 5em 0;
 		
 		a { 
 			color: #4d4d4d;
 			text-decoration: none;
-			-webkit-transition-property: text-shadow;
-			-webkit-transition-duration: 100ms;
+			
+			h1 { 
+				display: inline; 
+				border-bottom: 1px solid transparent; 
+				-webkit-transition-property: border;
+				-webkit-transition-duration: 200ms;
+				-webkit-transition-timing-function: ease-in;
+				padding: 0.1em;
+			}
+			&:hover h1 { border-bottom: 1px solid #9c9c9c; }
+		}
+		
+		> header {
+			position: relative;
+			
+			h1 { position: relative; }
+			h1 .wrapper { 
+				color: white;
+				background-color: $light_green; 
+				width: 75px;
+			  height: 75px;
+			  @include border-radius(37px);
+				position: absolute;
+				margin-top: -25px;
+				margin-left: 45%;
+				padding: 0;
+			}
+			h1 span { 
+				margin-top: 1.3em;
+				background-color: transparent;
+				padding: 0;
+				display: block;
+			}
+		}
+		
+		section#upcoming, section#past {
+			margin-top: 8em;
+			
+			> h1 { @include thirdly_header; }
+		}
+		
+		section#upcoming { 
+			@include column(4);
+			
+			article {
+				margin-top: 2em;
+				h1 { @include secondry_header; font-size: 2em; }
+				h1:after { content: "—"; }
+				p { @include body_copy; }
+				p.location { font-size: 1.2em; font-style: italic;}
+			}
+		}  
+		
+		section#past { 
+			@include column(6);
+			@include column-width(6);
+			
+			section#presentations { margin-top: 1.5em; }
+			article { 
+				@include column-width(3);
+				float: left;
+				clear: none;
+				margin-top: 1em;
+				
+				h1 { font-size: 1.3em; }
+			} 
+		}
+	}
+}
 
-			&:hover { text-decoration: underline; text-shadow: 0 0 1px rgba(0, 0, 0, 0.7); }
+body#article {
+	
+	header {
+		h1 { @include primary_header; @include column-width(3); }
+		h1:after { content: "—";}
+	}
+	.wrapper { position: relative; }
+	time { 
+		@include column(3); 
+		display: block; 
+		margin-top: 6em;
+		font-size: 1.2em; 
+		line-height: 1.4em;
+		font-style: italic;
+		color: #333;
+	}
+	.body { 
+		@include column(7); 
+		@include skip-column(1); 
+		margin-top: 6em; 
+	}
+	
+	.body aside {
+		@include column-width(2);
+		position: absolute;
+		top: 15.7em;
+		left: 0;
+		
+		h1 { 
+			font-size: 1.3em;
+			color: #999;
+			display: inline-block;
+			text-transform: uppercase;
+			letter-spacing: 0.1em;
+			border-bottom: 0.15em solid #ccc;
+			margin-bottom: 1.9em;
+		}
+		p {
+			font-size: 1.2em; 
+			line-height: 1.9em;
+			font-style: italic;
+			color: #666;
+			width: auto;
 		}
 	}
 	
-	section#meta {
-		@include clearfix; 
-		@include section_header; 
-		margin-bottom: 2em;
-
-		section#contact { @include column(6); }
-		section#external { @include column(6); }
-		
-		p { @include body_copy; width: auto; margin-top: 1em; }
-		
-		a[href^="mailto"] { 
-			@include button; 
-			@include skip-column; 
-			margin-top: 1em;
-			float: left;
-			background-image: url("/images/envelope.png"); 
-			background-repeat: no-repeat; 
-			background-position: 90% center; 
-			padding-right: 2em; 
-			font-weight: bold; 
-		}
-	}
+	h2 { @include secondry_header; @include column-width(6); margin-bottom: 1em; }
+	p { @include body_copy; margin-bottom: 1.5em; }
 	
 }
 
 body > footer { 
+	width: 20em;
 	font-style: italic;
 	position: relative; 
-	clear: left; 
+	clear: left;
+	margin: 0 auto; 
 	padding: 1em 0; 
-	border-top: 0.3em solid $light_green;
+	border-top: 0.1em solid $light_green;
+	text-align: center;
 	
-	small { color: #333; font-size: 1.2em; }
-
-	nav {
-		position: absolute;
-		top: 1em;
-		right: 0;
-		font-size: 1.2em;
-		
-		a { 
-			color: #4d4d4d;
-			text-decoration: none;
-			-webkit-transition-property: text-shadow;
-			-webkit-transition-duration: 100ms;
-
-			&:hover { text-decoration: underline; text-shadow: 0 0 1px rgba(0, 0, 0, 0.7); }
-		}
-		
-	}
+	small { color: #333; font-size: 1.3em; font-family: Palatino, "Palatino Linotype", Book Antiqua, serif; }
 }
