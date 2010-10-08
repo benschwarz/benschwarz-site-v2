@@ -1,0 +1,74 @@
+-# title: In search of perfect text
+-# published: 2010-08-24
+-# excerpt: How to utilise a few recent techniques to improve readability and clarity of text in the browser
+-# keywords: text, rendering, browser, online, reading, readability, css, html html5
+
+Beautifully rendered text online is seldom seen, at AB+C we're on a never-ending quest to improve not only typographic qualities, but the clarity of such text.
+In years gone by, many have achieved what would be considered impressive online typography by following a few simple guidelines;
+
+ Keep a sane measure
+ Always letter-space capital text
+ Keep capitals to a minimum (perhaps only headings)
+ Maintain the flow, by setting line-heights
+ 
+Now, this article by no means aims to be a typographic reference, for that there are numerous publications (elements of typographic style) and blog articles (5 steps to better typography online — Mark Bolton)
+
+I'm more concerned with rendering quality—antialiasing and kerning (or, the little gaps between each character)
+
+Antialiasing
+
+How many times have you dumped text into the browser without any thought of antialiasing when the designer pulls you aside to ask you why the text is heavier and 'spidery'? Photoshop uses text-rendering effects that allows a designer to choose a number of antialiasing settings. Thankfully, we can do this in the browser also. 
+
+<pre>
+  <h1>CSS</h1>
+  <code>
+    `h1 { text-shadow: 1px 1px 1px white; }`
+  </code>
+</pre>
+<aside>
+  Now, if your text is on a white background, Webkit's rendering engine would add the shadow to the inside of the letterform, this making it not only thinner, but also applying antialiasing!
+</aside>
+
+I'd been using this approach in the last few months up until Safari 5 was released (I wasn't alone), but sadly this was making use of a bug [find webkit bug ticket, insert here.] which has now been patched. 
+
+Webkit has recently included a new property, which is demonstrated below.
+
+<pre>
+  <h1>CSS</h1>
+  <code>
+    `h1 { -webkit-font-smoothing: antialiased; }`
+  </code>
+</pre>
+
+Obviously, this will only work in a webkit based browser:
+
+  Chrome √
+  Safari √
+  Mobile Safari √ (iPad, iPhone)
+  Android √
+  IE X
+  Firefox X 
+
+Firefox actually applies its own font-smoothing / antialiasing algorithm, but as far as I can tell, it is different on every operating system. (It also can been seen in Windows and Linux environments)
+
+Kerning.
+
+With many font services popping up in the last year or so, things never looked so good for `@font-face`. We ignored it for years after Microsoft implemented it _way_ back in IE5.5. This was largely due to the fact that it used the `.eot` font format. This was designed to make it harder than simply downloading the `.ttf` font. Thankfully, fast-forward to 2010, we've got all the majors (except for Apple, those cretins!) 
+
+Using a technique that was uncovered by Anthony (AB+C represent) we can ask our browser to optimise text legibility. (You'd think that it would be a default that was switched to on, right?) There is a performance hit, so I'd suggest using it for headings only. But, let us press onwards—
+
+<demo of optimise legibility on and off>
+  
+`optimizeLegibility` asks your browser to display fonts using the kerning data that is stored in most font files (be careful, some @font-face hosting services remove the kerning metadata in an effort to minimise file sizes)
+
+Not only does it enable kerning where available, but it will also look to insert ligatures. A ligature is a single character replacement for a certain pair of characters. (!!!! WIKI REF) For example, Anthony's initials are 'ae', there is a ligature character 'æ'. 
+
+Support for `optimiseLegibility` is fairly decent, although some people have reported bugs under palm's webos that makes text totally illegible! Shame, again, I'd suggest that you use this technique sparingly.
+
+Check the demos that Anthony has lovingly put together, which also includes an updated browser support list. 
+
+In closing
+
+Without adding any crass script, nasty techniques or proprietary software we can now correctly use licensed fonts, with antialiasing, ligatures and kerning.  
+
+We (AB+C) will continue our quest for new typographic techniques and will be sure to document them as we find them. 

@@ -1,0 +1,152 @@
+-# title: W3C Design
+-# published: 2010-05-17
+-# excerpt: How design could save the W3C
+-# keywords: typography, css, w3c, design, redesign, userscript, greasemonkey 
+:css
+  .anthony { font-family: "Courier New", courier; font-size: 1em; background: url('http://gravatar.com/avatar/be96b1cbc1142ec537d66dc85626b909?s=20') 2px left no-repeat; padding: 0em 0em 0em 2em; margin: 0em 0em 2em -2em; position: relative; }
+  section#content div.eight .anthony,
+  section#content p .anthony { background-image: none; margin: 0 0 1em 0; padding: 0px 0px 0px 2px; }
+  .anthony:before { content: '\2301'; font-size: 1.2em; color: #999; position: absolute; top: 0em; left: -0.9em; }
+  section#content p .anthony:before { content: ''; }
+  
+  div#co-author { margin: 0em 0em 0em 1em; }
+  
+  p img.nested { border: 1px solid #eee; padding: 8px 1px; max-width: 275px; float: left; }
+  article p { clear: left; }
+
+  #install a.button { margin: 1em 0em 0.5em; display: block; background-color: #ccc; border-radius: 5px; 
+    padding: 0.5em 1em; color: #333; text-shadow: 1px 1px 1px white; font-size: 1.4em; 
+    font-style: italic; text-decoration: none;
+    -webkit-box-shadow: 0px 1px 3px #999;
+    -moz-box-shadow: 0px 1px 3px #999;
+    background: -webkit-gradient(linear, left top, left bottom, from(#eee), to(#ccc));
+    text-align: center;
+  }
+  #install a.button:hover {
+    text-shadow: 1px 1px 1px #ccc;
+    background: -webkit-gradient(linear, left top, left bottom, from(#ccc), to(#999));
+  }
+  #install a.button:active {
+    background: -webkit-gradient(linear, left top, left bottom, from(#666), to(#999));
+    -webkit-box-shadow: 0px -3px 3px #ccc;
+    color: white;
+    text-shadow: 0 0 0 transparent;
+  }
+  
+  #install p { font-size: 1em; padding: 0.5em; }
+.column.eight
+  :smartypants
+    While preparing my [HTML workshop](http://workshop.germanforblack.com), I've been 
+    re-reading W3C specs in far further detail than I ever would've imagined. 
+    The reading experience is far from delightful. Not only is the text 
+    the entire browser width in measure, but it's dense and laborious to read. 
+    No wonder browser vendors have traditionally missed subtle details.
+    
+    Directly working on the improving the writing and review process would
+    be far too difficult, I needed something and I needed it _now_.
+    I set off to make the reading experience better.
+    
+    My goal was to add some sane styles to the pre-existing spec pages
+    that would vastly improve the reading experience.
+    
+    I whipped up a quick bookmarklet to load some custom CSS. I was
+    already happy. I wrote to Anthony; a typical kind of email that we
+    would trade:
+    
+    ![An email traded between Anthony and I](/readable-w3c/email.png "E-Mail")
+    
+    I promptly pushed my progress to github and added Anthony as a 
+    contributor.
+    
+    <p class="anthony">Having attempted to read through some of the specs myself, I had to agree. They are by nature very dense documents, made all the worse by a lack of proper typographic consideration. Neither of us was up to the task of rewriting the specs themselves, but improving the readability of the page was a good starting point.</p>
+    
+    ## The typefaces
+    I wanted the titles to be large and image-like. No spidery, thin text; 
+    it needed to cement the content that followed. I chose Chunk from 
+    [The league of Movable Type](http://www.theleagueofmoveabletype.com/)
+    and used `@font-face`.
+    
+    <p class="anthony">The main body typeface specified by the w3c is <code>font-family: sans-serif</code>, which resolves to Arial on Windows and Helvetica on Mac OS. Not a terrible choice, but while these typefaces give a clean, structured feel to the page, they are less ideal for large blocks of text. We switched out sans-serif in favour of <a href="http://www.microsoft.com/typography/fonts/family.aspx?FID=4">Matthew Carter's Georgia</a>, whose larger x-height and excellent hinting makes it much better suited to extended reading on screen.</p>
+    
+    ## The measure
+    When a typographer refers to "the measure", they mean the width of
+    the text body. Simply put, when copy is too wide or poorly spaced it
+    becomes difficult to read. This was the first issue that I had; physically 
+    scanning back and forth over the text was annoying and frustrating.
+    
+    <p class="anthony">The general rule for a comfortable measure is around
+    60–70 characters per line. Taking into account that each character
+    averages out to around <em>0.5em</em> in width, setting a measure of 
+    <em>33em</em> should keep each line within the optimum range.</p>
+
+    <p><img src="/readable-w3c/old-measure.png" alt="Old measure" class="nested">
+    <img src="/readable-w3c/new-measure.png" alt="New measure" class="nested"></p>
+    
+    ## Useless information
+    Why do I want to know about this version, the previous version,
+    editors and previous editors before I'd read any of the spec or its
+    introduction? Perhaps this is useful internally, but for the rest of
+    us, its just visual noise that could be removed.
+    
+    ##Poorly defined hierarchy
+    A spec is hard to scan, its even harder to decipher the different
+    levels of hierarchy. We decided to make a visual feature and pull the
+    numbering out to the left, creating a column that overhung the
+    original left margin.
+    
+    <p><img src="/readable-w3c/hanging-numbers-old.png" alt="" class="nested">
+    <img src="/readable-w3c/hanging-numbers.png" alt="" class="nested"></p>
+    
+    <p><img src="/readable-w3c/list-style-old.png" alt="" class="nested">
+    <img src="/readable-w3c/list-style.png" alt="" class="nested"></p>
+    
+    <p class="anthony">We added an additional colour palette based off <code style="background:#066;text-shadow:0px 0px 0px;color:#fff;border-radius:0px;">#066</code> to help clarify the multiple levels of headings. Colour variation is much easier for the eye to differentiate than the hierarchical number system the w3c currently employs. Additionally, #066 blends easily with the black body text — letting us emphasise links without them interrupting the reading flow. It also gives a nice tonal range to work with, all the way down to <code style="background:#cff;text-shadow:0px 0px 0px;color:#000;border-radius:0px;">#cff</code> which works well as a background tint behind black (which we used for the main code blocks).</p>
+    
+    <p>
+      <code style="background:#000;text-shadow:0px 0px 0px;color:#000;border-radius:0px;line-height:4.6;padding:8px 2px;">#000</code>
+      <code style="background:#033;text-shadow:0px 0px 0px;color:#033;border-radius:0px;line-height:4.6;padding:8px 2px;">#033</code>
+      <code style="background:#066;text-shadow:0px 0px 0px;color:#066;border-radius:0px;line-height:4.6;padding:8px 2px;">#066</code>
+      <code style="background:#399;text-shadow:0px 0px 0px;color:#399;border-radius:0px;line-height:4.6;padding:8px 2px;">#399</code>
+      <code style="background:#6cc;text-shadow:0px 0px 0px;color:#6cc;border-radius:0px;line-height:4.6;padding:8px 2px;">#6cc</code>
+      <code style="background:#cff;text-shadow:0px 0px 0px;color:#cff;border-radius:0px;line-height:4.6;padding:8px 2px;">#cff</code>
+    </p>
+    
+    ## Putting it together
+    Next up, a [userscript version](http://userscripts.org/scripts/show/76281)
+    was in order.
+    
+    The script is really simple; it just adds the styles and script tags
+    into spec pages. The external script and style files are currently hosted
+    straight out of the Github repository.
+    
+    ## Going forward
+    <p class="anthony">We have spent a bit of time writing override rules to clean up the w3c's table and list styles and to reduce some of the more unwieldy page sections. Due to the complexity and variety of spec pages, it's an ongoing project. The styles will continue to be updated as we come across more awkward type treatments throughout the specs.</p>
+    
+    We haven't styled every single element that we've come across through
+    the W3C specs, so if you find something that looks out of place and feel like
+    getting your hands dirty, please [fork the project](http://github.com/benschwarz/w3c-spec-styles) and 
+    send me a patch.
+    
+    What would we like to see happen with this alternate stylesheet?
+    w3c adoption. Until the w3c put further respect in to the standards
+    that they govern for the world, we will continue to live in a web
+    environment that has a poor understanding for its medium. Now, with
+    WHATWG, communication and transparency and a "do-over" in HTML5, we can
+    change the face of the future of the web. Now thats a project worth
+    working on.
+    
+    ## Before/After
+    <a href="http://www.w3.org/TR/css3-fonts/"><img src="/readable-w3c/w3c-before.png" alt="" class="nested"></a>
+    <a href="http://www.germanforblack.com/css-fonts-demo/index.html"><img src="/readable-w3c/w3c-after.png" alt="" class="nested"></a>
+    
+    – Best, <a href="http://www.ab-c.com.au" title="AB+C">Anthony + Ben</a>
+%section.column.three
+  %section#co-author
+    %p.anthony
+      :smartypants
+        <p class="anthony">Co-authored by <a href="http://aestheticallyloyal.com" class="anthony">Anthony Kolber</a>. His comments marked up in Courier New.</p>
+  %section#install.note
+    :smartypants
+      <a class="button" href="http://userscripts.org/scripts/show/76281">Get the userscript</a>
+      <p>To use our alternate styles, you'll need either Safari (with <a href="http://8-p.info/greasekit/">Greasekit</a>), 
+      Firefox (with <a href="http://www.greasespot.net/">Greasemonkey</a>) or <a href="http://www.google.com/chrome">Chrome</a></p>

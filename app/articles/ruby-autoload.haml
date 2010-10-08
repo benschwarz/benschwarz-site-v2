@@ -1,0 +1,41 @@
+-# title: Hacking ruby's autoload
+-# published: 2010-02-08
+-# excerpt: How and why I overrode Kernel.autoload
+-# keywords: ruby, rubygems, autoload, code, gist, kernel, monkey-patch
+
+.column.seven
+  :smartypants
+    Recently, I wrote [transcoder](http://github.com/benschwarz/transcoder) as a means of parsing common web formats (`json`, `xml`, `rss/atom` anyone?) without being too concerned about what a web service or API was returning to you. 
+    
+    I pushed out 0.1.0 hastily and went for [sake](http://twitpic.com/16xkt6), glorious, comfortable sake. I knew however, that something wasn't quite right.
+    
+    When transcoder was required' it would bring in all of its dependencies, so if you were only hoping to parse a `yaml` file, you got everything: json, xml and rss. Not good, too much.
+    
+    ## Ruby's autoload
+    Autoload is a Ruby kernel method, you give it a constant and a filepath, when the constant is found to be undefined, it attempts to load the filepath. 
+    Fantastic right? Well, sadly. No.
+    
+    Autoload will only load from your `$LOAD_PATH`, so I decided to [roll up my sleeves](http://gist.github.com/324367).
+    
+    Now, I'm sure that overriding `Object` is pretty much a no-no in nearly every circumstance, but `Kernel` as well? [Ludacris](http://en.wikipedia.org/wiki/Ludacris)!
+    
+    ## In closing
+    No matter how [bat-shit-crazy](http://images.google.com.au/images?sourceid=chrome&q=tom%20cruise%20on%20couch&um=1&ie=UTF-8&sa=N&hl=en&tab=wi) you might think this hack is, its actually very awesome. 
+    
+    ## Conclusion
+    I wrote this post full-well knowing that this was a pretty dirty solution - certainly not one that you would want in library code. 
+    
+    Where do you turn? To [Evan Phoenix](http://blog.fallingsnow.net/), thats who. 
+    
+    I explained the design problem that I was faced with to Evan. One of the most magical things about the [Rubinius](http://rubini.us/) project is that Evan and [Brian](http://github.com/brixen) are implmenting Ruby IN RUBY. 
+    
+    They've probably thought about or wrestled with similar design issues or requirements while implementing the core ruby language. 
+    
+    Evan explained a design solution, and [I implemented it](http://github.com/benschwarz/transcoder/commit/eb4463380925dde8436f766edc4d4b98066ffffa).
+    Hopefully I didn't trample too much over this. A big thanks is due to Evan. 
+    
+%aside
+  %h1 Notes
+  :smartypants
+    View: [The gist](http://gist.github.com/324367).
+    View: [The final implementation](http://github.com/benschwarz/transcoder/commit/eb4463380925dde8436f766edc4d4b98066ffffa)
