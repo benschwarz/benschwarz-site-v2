@@ -2,14 +2,17 @@
   %h3 Hi!
   %hgroup
     %h1 I’m Ben Schwarz
-    %img{:src => "/images/me.jpg"}
+    %figure
+      %img{:src => "/images/me.jpg"}
+      %figcaption A smug looking Ben Schwarz, prat.
     %h2 I love minimal, functional design and development techniques, typography and all things web
 %section#bio
   %p Ben Schwarz is a well known Melbourne based developer who funds his love of good food (at home) and sake (in bars) by designing sophisticated web applications using standards based technology. <br>More than anything else, he is driven by a maniacal desire to produce not only elegant code, but also beautiful software in the hands of its&nbsp;users.
 
 %section#articles
-  %h1 
-    %span An archive of articles
+  %header
+    %h1 
+      %span An archive of articles
   
   %dl 
     %dt 2010
@@ -44,38 +47,53 @@
         %dd
           %article
             %a{href: "/"}
-              %h1 Hacking Ruby's autoload
-              %h2 How and why I overrode Kernel.autoload
-
-%section#presentations
-  %h1
-    %span Presentations
-  %dl
-    %dt 2010
-    %dd
-      %dl
-        %dt May
-        %dd.slides
-          %a{href: "/"} Introducing "The hoard"
-        %dd.video
-          %a{href: "/"} Introducing "The hoard"
-    %dd
-      %dl
-        %dt April
-        %dd.slides
-          %a{href: "/"} Introducing "The hoard"
-        %dd.video
-          %a{href: "/"} Introducing "The hoard"
-        %dd.video
-          %a{href: "/"} Introducing "The hoard"
+              %h1 Travel the world for work
+              %h2 Make the most of it kids
 
 %section#meta
-  %h1
-    %span Meta
+  %header
+    %h1
+      %span Meta
   %section#contact
+    %h1 Old school
     %p
-      You have a lot of options to contact me, email is good, but I can often be found at web events around the world, hit me up if you’d like to catch up.
-    %a{:href => "mailto:#{entity_encode('ben.schwarz@gmail.com')}"} E-Mail Ben
+      When not travelling for work, <a href="http://lanyrd.com/people/benschwarz/" rel="external me">conferences</a> or sheer enjoyment, I can be found somewhere in Melbourne. Drop me a line #{mail_to 'ben.schwarz@gmail.com', "via Email", encode: 'hex'}. <a href="http://twitter.com/benschwarz" rel="external me">I tweet</a>, <a href="http://flickr.com/photos/benschwarz" rel="external me">take photos</a>, write and <a href="http://github.com/benschwarz" rel="external me">release open source software</a>, <a href="http://slideshare.com/benschwarz" rel="external me">give talks</a> and <a href="http://thehoard.org/benschwarz" rel="external me">hoard my treasures</a>.
+
   %section#external
+    %h1 AB+C
     %p
-      Apart from my personal work I also operate AB+C, alongside ANTHONY KOLBER. Together we build beautiful, professional looking web applications. Got something you want to get off the ground? Talk to us.
+      Apart from my personal work I also operate AB+C, alongside Anthony Kolber. Together we build beautiful, professional looking web applications. Got something you want to get off the ground? Talk to us.
+
+%section#events
+  %header
+    %h1
+      .wrapper
+        %span Events
+  %section#upcoming
+    %h1 Upcoming Events
+    %article
+      %a{href: "#"}
+        %h1 HTML5 Workshop
+        %p Web directions south, 2010
+        %p.location Sydney, Australia
+  %section#past
+    %h1 Past presentations
+    %section#presentations
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
+      %article
+        %a{href: ""}
+          %h1 Introducing "The hoard"
