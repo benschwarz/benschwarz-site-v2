@@ -6,10 +6,16 @@
 $background_colour: #F6F6F6; 
 $light_green: #8ECC3E;
 
+@include pop-animation;
+
 @mixin flag { 
 	@include border-radius(0.25em);
 	border-bottom-right-radius: 0;
 	@include background-size(cover);
+	
+	-webkit-animation-name: pop;
+	-webkit-animation-duration: 400ms;
+	-webkit-animation-timing-function: ease-in-out;
 	
 	font-size: 2.4em; 
 	margin: 0.5em 0 0 -3em;

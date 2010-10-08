@@ -44,3 +44,11 @@
 	-o-background-size: $value;
 	background-size: $value;
 }
+
+@mixin pop-animation {
+	@-webkit-keyframes pop {
+		0%   { -webkit-transform: scale(0.1); opacity: 0; }
+		70%  { -webkit-transform: scale(1.5); }
+		100% { -webkit-transform: scale(1.0); opacity: 1; }
+	}
+}
