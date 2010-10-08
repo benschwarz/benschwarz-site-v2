@@ -1,0 +1,17 @@
+$column_width: 60px;
+$column_gutter: 20px;
+
+@mixin column-width($count: 1) {
+	width: ($column_width + $column_gutter) * $count - $column_gutter;
+}
+
+@mixin column($count: 1) {
+	width: $column_width * $count;
+  margin-right: $column_gutter;
+  float: left;
+	&:last-of-type { margin-right: 0; }
+}
+
+@mixin skip-column($count: 1) { 
+	margin-left: ($column_width + $column_gutter) * $count - $column_gutter;
+}
