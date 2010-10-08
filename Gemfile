@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'thin'
 gem 'rails', '3.0.0'
 
+gem 'heroku'
 gem 'haml'
 gem 'high_voltage'
 gem 'rdiscount'
