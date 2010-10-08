@@ -231,11 +231,20 @@ body#article {
 		color: #333;
 	}
 	.body { 
-		@include column(7); 
+		@include column(7);
+		@include column-width(7);
 		@include skip-column(1); 
 		margin-top: 6em; 
 	}
-	
+	.body img { margin-left: -1.5em; }
+	.body pre { 
+		margin-bottom: 3em;
+		margin-left: -1.75em; 
+		background-color: #efefef;
+	}
+	.body h4:before { content: "—"; }
+	.body h4 { font-style:italic; font-size: 1.5em; margin: 1em 0; color: #666; }
+	.body pre code { font-size: 135%; color: #4d4d4d; background-color: #efefef; display: inline-block; padding: 1em; }
 	.body aside {
 		@include column-width(2);
 		position: absolute;
@@ -257,12 +266,26 @@ body#article {
 			font-style: italic;
 			color: #666;
 			width: auto;
+			&:last-child:after { content: ""; }
 		}
 	}
 	
 	h2 { @include secondry_header; @include column-width(6); margin-bottom: 1em; }
 	p { @include body_copy; margin-bottom: 1.5em; }
 	
+	p:last-child { 
+		position: relative;
+		
+		&:last-child:after { 
+			content: "Ϟ"; 
+			position: absolute;
+			font-weight: bold; 
+			font-style: italic; 
+			left: 0;
+			top: 0;
+			margin-left: -5em;
+		}
+	}
 }
 
 body > footer { 
@@ -274,6 +297,16 @@ body > footer {
 	padding: 1em 0; 
 	border-top: 0.1em solid $light_green;
 	text-align: center;
+	a { 
+		text-decoration: none;
+		border-bottom: 1px solid transparent; 
+		-webkit-transition-property: border;
+		-webkit-transition-duration: 200ms;
+		-webkit-transition-timing-function: ease-in;
+		padding: 0.1em;
+		
+		&:hover { border-bottom: 1px solid #9c9c9c; }
+	}
 	
 	small { color: #333; font-size: 1.3em; font-family: Palatino, "Palatino Linotype", Book Antiqua, serif; }
 }
