@@ -14,42 +14,20 @@
     %h1 
       %span An archive of articles
   
-  %dl 
-    %dt 2010
-    %dd
-      %dl
-        %dt March
-        %dd
-          %article
-            %a{href: "/"}
-              %h1 Moving towards readable specs
-              %h2 How design could save the W3C.
-        %dt April
-        %dd  
-          %article
-            %a{href: "/"}
-              %h1 Stop writing plans
-              %h2 We all have great ideas, but to be fair to our craft, sometimes we have to forget them.
-          %article
-            %a{href: "/"}
-              %h1 Web design with grids
-              %h2 The technique that I've been using to work on page layouts.
-        %dt August
-        %dd
-          %article
-            %a{href: "/"}
-              %h1 Hacking Ruby's autoload
-              %h2 How and why I overrode Kernel.autoload
-    %dt 2009
-    %dd
-      %dl
-        %dt February
-        %dd
-          %article
-            %a{href: "/"}
-              %h1 Travel the world for work
-              %h2 Make the most of it kids
-
+  %dl
+    - @articles.group_by{|a| a.published.year }.each do |year, articles|
+      %dt= year
+      %dd
+        - articles.group_by{|a| a.published.month}.each do |month, articles|
+          %dl
+            %dt= articles.first.published.strftime('%B')
+            - for article in articles
+              %dd
+                %article
+                  %a{:href => article_path(article)}
+                    %h1= article.title
+                    %h2= article.excerpt
+                    
 %section#meta
   %header
     %h1
