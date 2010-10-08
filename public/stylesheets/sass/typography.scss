@@ -14,27 +14,43 @@
 	font-weight: bold; 
 	color: #4D4D4D; 
 	line-height: 1em; 
-	font-size: 6.5em;
+	font-size: 7em;
 }
 
 @mixin secondry_header {
-	font-family: Baskerville, 'Baskerville old face', 'Times New Roman', serif;
-	font-size: 2.5em;
+	font-family: Palatino, "Palatino Linotype", Book Antiqua, serif;
+	font-size: 2.40em;
 	color: #4D4D4D;
 	
 	.fontsmoothing & { color: #333; }
 }
 
 @mixin thirdly_header { 
-	font-family: Baskerville, 'Baskerville old face', 'Times New Roman', serif;
-	font-style: italic; 
-	font-size: 1.8em; 
-	color: #333;
+	font-family: Palatino, "Palatino Linotype", Book Antiqua, serif;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-size: 1.3em;
+	padding-bottom: 0.25em;
+	border-bottom: 1px solid #ccc;
+	display: inline;
+	color: #4D4D4D;
 }
 
 @mixin body_copy { 
-	font-family: Baskerville, 'Baskerville old face', 'Times New Roman', serif;
-	font-size: 1.6em;
+	font-family: Palatino, "Palatino Linotype", Book Antiqua, serif;
+	font-size: 1.5em;
 	width: 33em;
 	color: #444;
+	
+	a { 
+		display: inline;
+		text-decoration: none;
+		padding-bottom: 0.1em;
+		border-bottom: 1px solid #ccc;
+		-webkit-transition-property: border;
+		-webkit-transition-duration: 250ms;
+		-webkit-transition-timing-function: ease-in;
+		
+		&:hover { color: #303030; border-bottom: 1px solid #9C9C9C }
+	}
 }
