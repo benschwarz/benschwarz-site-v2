@@ -57,21 +57,7 @@
   %section#past
     %h1 Past presentations
     %section#presentations
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
-      %article
-        %a{href: ""}
-          %h1 Introducing "The hoard"
+      - for presentation in @presentations
+        %article
+          %a{href: presentation[:link], rel: "external"}
+            %h1=raw presentation[:title]
