@@ -3,4 +3,5 @@ BenschwarzSite::Application.routes.draw do |map|
 
   resources :articles, :only => :show
   match "/articles", :to => redirect("/")
+  match "/about", :to => redirect("/")
 end
