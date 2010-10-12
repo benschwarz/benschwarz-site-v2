@@ -125,7 +125,7 @@ body#about {
 			}
 			&:hover h1 { border-bottom: 1px solid #9c9c9c; }
 			
-			h2 { @include body_copy; @include column-width(5); }
+			h2 { @include body_copy; @include column-width(5) }
 		}
 	}
 	
@@ -221,7 +221,8 @@ body#about {
 }
 
 body#article {
-	
+	a#home { font-size: 1.2em; font-style: italic; text-decoration: none; } 
+	a#home:before { content:" ← "; font-style: normal;}
 	header {
 		h1 { @include primary_header; @include column-width(3); }
 		h1:after { content: "—";}

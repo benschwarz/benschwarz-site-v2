@@ -5,6 +5,15 @@
     %title Ben Schwarz's site
     %link{rel: "stylesheet", href: "/stylesheets/application.css"}
     %script{src: "/javascripts/modernizr.js"}
+    
+    %link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
+    %link{:rel => "openid.delegate", :href => "http://benschwarz.myopenid.com/"}
+    %link{:rel => "alternate", :title => "German for black RSS", :href => "/articles.atom", :type => "application/atom+xml"}
+    %meta{:name => "author", :content => "Ben Schwarz"}
+    %meta{:name => "robots", :content => "index, follow"}
+    %meta{:name => "verify-v1", :content => "BlTJbJUo6znmPTKrfDI07Fho8QvSw7Q/4NxpM0s4HwU="}
+    %meta{:name => "description", :content => "A Melbourne based ruby developer with an uncanny fetish for user experience and technology"}
+    %meta{:name => "keywords", :content => "ruby, developer, ui, ux, user experience, application development, testing, test driven, development, melbourne, australia, ben, ben schwarz, benschwarz, bschwarz, smoke, passenger-stack, bonsai"}
     = csrf_meta_tag
   %body{id: params[:action]}
     = yield

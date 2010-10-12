@@ -1,4 +1,6 @@
 class Article
+  extend ActiveModel::Naming
+  
   class NotFound < StandardError; end
   
   @path = Rails.root + "app/articles"

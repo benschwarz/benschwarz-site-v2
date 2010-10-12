@@ -3,7 +3,7 @@
 -# excerpt: How design could save the W3C
 -# keywords: typography, css, w3c, design, redesign, userscript, greasemonkey 
 :css
-  .anthony { font-family: "Courier New", courier; font-size: 1em; background: url('http://gravatar.com/avatar/be96b1cbc1142ec537d66dc85626b909?s=20') 2px left no-repeat; padding: 0em 0em 0em 2em; margin: 0em 0em 2em -2em; position: relative; }
+  body#article p.anthony { font-family: "Courier New", courier; font-size: 1.2em; background: url('http://gravatar.com/avatar/be96b1cbc1142ec537d66dc85626b909?s=20') 2px left no-repeat; padding: 0em 0em 0em 4em; margin: 0em 0em 2em -4em; position: relative; }
   section#content div.eight .anthony,
   section#content p .anthony { background-image: none; margin: 0 0 1em 0; padding: 0px 0px 0px 2px; }
   .anthony:before { content: '\2301'; font-size: 1.2em; color: #999; position: absolute; top: 0em; left: -0.9em; }
@@ -11,7 +11,7 @@
   
   div#co-author { margin: 0em 0em 0em 1em; }
   
-  p img.nested { border: 1px solid #eee; padding: 8px 1px; max-width: 275px; float: left; }
+  p img.nested { border: 1px solid #eee; max-width: 237px; float: left; margin: 2em 2em; }
   article p { clear: left; }
 
   #install a.button { margin: 1em 0em 0.5em; display: block; background-color: #ccc; border-radius: 5px; 
@@ -140,7 +140,7 @@
     <a href="http://www.germanforblack.com/css-fonts-demo/index.html"><img src="/readable-w3c/w3c-after.png" alt="" class="nested"></a>
     
     – Best, <a href="http://www.ab-c.com.au" title="AB+C">Anthony + Ben</a>
-%section.column.three
+%aside
   %section#co-author
     %p.anthony
       :smartypants

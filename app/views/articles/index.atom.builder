@@ -1,12 +1,18 @@
-xml.instruct!
-xml.feed("xmlns" => "http://www.w3.org/2005/Atom") do
-  xml.title("Ben Schwarz's articles")
-  xml.link("rel" => "self", "href" => root_url(:format => :atom))
-  xml.link("rel" => "alternate", "href" => root_url)
-  xml.id("tag:#{request.host},2005:#{request.request_uri.split(".")[0]}")
-  xml.updated(@articles.first.created_at.strftime("%Y-%m-%dT%H:%M:%SZ")) if @articles.any?
-  xml.author("Ben Schwarz")
+atom_feed do |feed|
+  feed.title("Articles by Ben Schwarz")
 
+  feed.updated(@articles.first.published)
 
-  xml << render @article
+  @articles.each do |event|
+    feed.entry(event) do |entry|
+      content = Haml::Engine.new(event.template).render
+
+      entry.title(h(event.title))
+      entry.content(content, type: 'html')
+
+      entry.author do |author|
+        author.name("Ben Schwarz")
+      end
+    end
+  end
 end

@@ -8,6 +8,7 @@
     = csrf_meta_tag
   %body{id: "article"}
     %article
+      %a#home{href: root_path} Home
       %header
         %h1= @article.title
       .wrapper
