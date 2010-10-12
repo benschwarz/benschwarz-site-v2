@@ -5,7 +5,12 @@
     %title= @article.title
     %link{rel: "stylesheet", href: "/stylesheets/application.css"}
     %script{src: "/javascripts/modernizr.js"}
-    = csrf_meta_tag
+    %link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
+    %link{:rel => "openid.delegate", :href => "http://benschwarz.myopenid.com/"}
+    %link{:rel => "alternate", :title => "German for black RSS", :href => "/articles.atom", :type => "application/atom+xml"}
+    %meta{:name => "author", :content => "Ben Schwarz"}
+    %meta{:name => "robots", :content => "index, follow"}
+    %meta{:name => "verify-v1", :content => "BlTJbJUo6znmPTKrfDI07Fho8QvSw7Q/4NxpM0s4HwU="}
   %body{id: "article"}
     %article
       %a#home{href: root_path} Home
@@ -23,3 +28,10 @@
     %footer
       %small © Ben Schwarz 2009—  
     %script{src: "/javascripts/application.js"}
+    %script{ :src => "http://www.google-analytics.com/urchin.js", :type => "text/javascript" }
+    %script{ :type => "text/javascript" }
+      _uacct = "UA-139707-2";
+      urchinTracker();
+    %script{:src => "/javascripts/jquery-1.4.2.min.js"}  
+    %script{:src => "/javascripts/track-external.js"}
+    
