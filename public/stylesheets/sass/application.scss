@@ -67,7 +67,7 @@ $light_green: #8ECC3E;
 		font-style: italic;
 		color: #777;
 	}
-	dl dl dt { @include skip-column(5); @include column-width(2);  }
+	dl dl dt { @include skip-column(6); @include column-width(2);  }
 }
 
 body { @include column-width(10); font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; line-height: 1.5; margin: 3em auto; background-color: $background_colour; }
