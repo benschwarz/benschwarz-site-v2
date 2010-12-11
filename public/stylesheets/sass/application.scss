@@ -208,12 +208,13 @@ body#about {
 		}  
 		
 		section#past { 
-			@include column(6);
-			@include column-width(6);
+			@include column(5);
+			@include column-width(5);	
+			@include skip-column(2);
 			
 			section#presentations { margin-top: 1.5em; }
 			article { 
-				@include column-width(3);
+				@include column-width(2.5);
 				float: left;
 				clear: none;
 				margin-top: 1em;
