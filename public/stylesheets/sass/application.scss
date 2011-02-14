@@ -6,9 +6,7 @@
 $background_colour: #F6F6F6; 
 $light_green: #8ECC3E;
 
-::selection { background: $light_green; }
-::-moz-selection { background: $light_green; }
-::-webkit-selection { background: $light_green; }
+::selection, ::-moz-selection, ::-webkit-selection { background: $light_green; color: white; }
 
 @include pop-animation;
 
