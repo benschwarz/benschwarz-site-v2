@@ -242,22 +242,22 @@ body#article {
 		font-style: italic;
 		color: #333;
 	}
-	.body { 
+	section[role="main"] { 
 		@include column(7);
 		@include column-width(7);
 		@include skip-column(1); 
 		margin-top: 6em; 
 	}
-	.body img { margin-left: -1.5em; }
-	.body pre { 
+	section[role="main"] img { margin-left: -1.5em; }
+	section[role="main"] pre { 
 		margin-bottom: 3em;
 		margin-left: -1.75em; 
 		background-color: #efefef;
 	}
-	.body h4:before { content: "—"; }
-	.body h4 { font-style:italic; font-size: 1.5em; margin: 1em 0; color: #666; }
-	.body pre code { font-size: 135%; color: #4d4d4d; background-color: #efefef; display: inline-block; padding: 1em; }
-	.body aside {
+	section[role="main"] h4:before { content: "—"; }
+	section[role="main"] h4 { font-style:italic; font-size: 1.5em; margin: 1em 0; color: #666; }
+	section[role="main"] pre code { font-size: 135%; color: #4d4d4d; background-color: #efefef; display: inline-block; padding: 1em; }
+	section[role="main"] aside {
 		@include column-width(2);
 		position: absolute;
 		top: 15.7em;
@@ -283,7 +283,8 @@ body#article {
 	}
 	
 	h2 { @include secondry_header; @include column-width(6); margin-bottom: 1em; }
-	p { @include body_copy; margin-bottom: 1.5em; }
+	p, ul, ol { @include body_copy; margin-bottom: 1.5em; }
+	li { list-style-type: square; margin-bottom: 1em; color: #444; font-style: italic; }
 	
 	p:last-child { 
 		position: relative;

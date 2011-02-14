@@ -22,7 +22,7 @@
           = @article.published.strftime('%B')
           = @article.published.strftime('%d').to_i.ordinalize 
           = @article.published.strftime('%Y')
-        .body
+        %section{role: "main"}
           %h2= @article.excerpt
           = yield
     %footer
