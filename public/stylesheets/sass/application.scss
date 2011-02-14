@@ -299,6 +299,12 @@ body#article {
 			margin-left: -5em;
 		}
 	}
+	
+	nav#footnotes {
+		margin-bottom: 3em;
+		a { display: block; font-size: 1.5em; color: #999; }
+		sup { margin-right: 1em; }
+	}
 }
 
 body > footer { 
