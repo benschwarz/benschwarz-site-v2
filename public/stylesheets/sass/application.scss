@@ -316,13 +316,13 @@ body > footer {
 	text-align: center;
 	a { 
 		text-decoration: none;
-		border-bottom: 1px solid transparent; 
+		border-bottom: 1px solid #9c9c9c; 
 		-webkit-transition-property: border;
 		-webkit-transition-duration: 200ms;
 		-webkit-transition-timing-function: ease-in;
 		padding: 0.1em;
 		
-		&:hover { border-bottom: 1px solid #9c9c9c; }
+		&:hover { border-bottom: 1px solid transparent; }
 	}
 	
 	small { color: #333; font-size: 1.3em; font-family: Palatino, "Palatino Linotype", Book Antiqua, serif; }
