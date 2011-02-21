@@ -1,0 +1,1 @@
+Transcoder.register("application/rss+xml; charset=utf-8", Transcoder::Feed)
