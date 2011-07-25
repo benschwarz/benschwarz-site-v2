@@ -5,6 +5,9 @@
     %title Ben Schwarz's site
     %link{rel: "stylesheet", href: "/stylesheets/application.css"}
     %script{src: "/javascripts/modernizr.js"}
+    /[if gte IE 6 & lte IE 8]
+      %script{src: '/javascripts/mootools.js'}
+      %script{src: '/javascripts/selectivizr-min.js'}
     
     %link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
     %link{:rel => "openid.delegate", :href => "http://benschwarz.myopenid.com/"}
@@ -24,6 +27,3 @@
     %script{ :type => "text/javascript" }
       _uacct = "UA-139707-2";
       urchinTracker();
-    %script{:src => "/javascripts/jquery-1.4.2.min.js"}  
-    %script{:src => "/javascripts/track-external.js"}
-    

@@ -7,6 +7,9 @@
       — an article by Ben Schwarz
     %link{rel: "stylesheet", href: "/stylesheets/application.css"}
     %script{src: "/javascripts/modernizr.js"}
+    /[if gte IE 6 & lte IE 8]
+      %script{src: '/javascripts/mootools.js'}
+      %script{src: '/javascripts/selectivizr-min.js'}
     %link{:rel => "openid.server", :href => "http://www.myopenid.com/server"}
     %link{:rel => "openid.delegate", :href => "http://benschwarz.myopenid.com/"}
     %link{:rel => "alternate", :title => "German for black RSS", :href => "/articles.atom", :type => "application/atom+xml"}
