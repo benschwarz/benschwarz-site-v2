@@ -75,7 +75,7 @@ $light_green: #8ECC3E;
 body { @include column-width(10); font-size: 62.5%; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; line-height: 1.5; margin: 3em auto; background-color: $background_colour; }
 
 body#about {
-	> header {
+	header[role="banner"] {
 		h1 { @include primary_header; @include column(5); @include column-width(5); margin-bottom: 0.2em; }
 		h2 { @include secondry_header; clear: left; margin-top: 0.7em; }
 		h3 { @include flag; }
