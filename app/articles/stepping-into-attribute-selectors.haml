@@ -1,0 +1,25 @@
+-# title: Stepping into attribute selectors
+-# published: 2011-07-27
+-# excerpt: Its well past prime time to use more complex selectors in CSS to our advantages
+-# keywords: web, design, website, development, coding, layout, css, aria, html5, html
+
+.column.eight
+  :smartypants
+    For years we've been using IDs in our markup: `#wrapper`, `#page`, `#header`, `#footer`, `#sidebar` and other friends. One of the efforts of HTML5 has been recognising these common patterns, and for a for a few years now we've had tags like `<header>`, `<footer>` and `<aside>`.
+
+    These tags go quite aways to replacing the commonly used IDs in our markup, although due to the nature of document hierarchy, there are commonly many headers and footers within a HTML page.
+
+    So, the practice that I've been following alongside using the newer tags is the usage of some simple ARIA roles to semantically describe my content. 
+
+    Specifically, "<a href="http://www.w3.org/TR/wai-aria/roles#banner">banner</a>" ("A region that contains mostly site-oriented content, rather than page-specific content"), "<a href="http://www.w3.org/TR/wai-aria/roles#main">main"</a> ("The main content of a document"), and finally "<a href="contentinfo">contentinfo</a>" (A large perceivable region that contains information about the parent document).
+
+    <script src="https://gist.github.com/1106038.js"> </script>
+
+    Perhaps the header on line 12 can be used for styling, perhaps its not required at all, but now using some simple CSS selectors we have control over the `<header>` tags used in our markup.
+
+    <script src="https://gist.github.com/1106042.js"> </script>
+
+    For those of you who aren't targeting IE6, or better yet, totally not supporting it, the good news is that IE (7+) supports attribute selectors… and, of course if you wanted to continue to support IE6, you could drop in <a href="http://selectivizr.com/">selectivizr</a> and move on with your life.
+%aside
+  %h1 Disclaimer
+  %p It appears that Jeremy Keith <a href="http://adactio.com/journal/4267/">wrote about this</a> at the start of the year, but, being that I wrote this before realising Jeremy's article existed, I'll publish it anyway. (+1 Jeremy)
