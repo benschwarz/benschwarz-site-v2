@@ -1,3 +1,4 @@
+@charset "utf-8";
 @import 'reset';
 @import 'typography';
 @import 'css3';
@@ -288,13 +289,12 @@ body#article {
 		position: relative;
 		
 		&:last-child:after { 
-			content: "Ϟ"; 
+			content: "✌"; 
 			position: absolute;
-			font-weight: bold; 
-			font-style: italic; 
+			font-size: 1.5em;
 			left: 0;
 			top: 0;
-			margin-left: -5em;
+			margin-left: -3em;
 		}
 	}
 	
