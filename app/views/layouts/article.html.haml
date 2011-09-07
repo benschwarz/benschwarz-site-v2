@@ -30,6 +30,11 @@
         %section{role: "main"}
           %h2= @article.excerpt
           = yield
+          %section.footer
+            %img{class: "avatar", src: "https://secure.gravatar.com/avatar/42e2ec6a72627f8c15115e279a5f7d8e?s=60"}
+            %p I'm Ben Schwarz, my twitter profile says<br> "I build tiny pieces of the internet".
+            <a href="http://twitter.com/benschwarz" class="twitter-follow-button" data-show-count="false">Follow @benschwarz</a>
+            <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
     %footer
       %small © <a href="/">Ben Schwarz</a> 2009—  
     %script{src: "/javascripts/application.js"}
