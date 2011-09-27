@@ -63,5 +63,5 @@
     %section#presentations
       - for presentation in @presentations
         %article
-          %a{href: presentation[:link], rel: "external"}
-            %h1=raw presentation[:title]
+          %a{href: presentation["link"], rel: "external"}
+            %h1=raw presentation["title"]
