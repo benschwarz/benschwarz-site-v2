@@ -298,6 +298,17 @@ body#article {
 		}
 	}
 	
+	.footer {
+		@include border-radius(5px);
+		padding: 1em; background-color: #eee;
+		margin: 2em 0;
+		
+		p { font-family: Helvetica, Arial, sans-serif; color: #666; margin: 0; }
+		.avatar { float: left; margin: 0.3em; margin-right: 1em; }
+		a { float: left; }
+	}
+	
+	
 	nav#footnotes {
 		margin-bottom: 3em;
 		a { display: block; font-size: 1.5em; color: #999; }
@@ -327,3 +338,5 @@ body > footer {
 	
 	small { color: #333; font-size: 1.3em; font-family: Palatino, "Palatino Linotype", Book Antiqua, serif; }
 }
+
+.gist-meta { display: none; }
