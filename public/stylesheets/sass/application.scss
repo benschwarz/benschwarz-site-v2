@@ -305,7 +305,9 @@ body#article {
 		
 		p { font-family: Helvetica, Arial, sans-serif; color: #666; margin: 0; }
 		.avatar { float: left; margin: 0.3em; margin-right: 1em; }
+		p a { float: none; }
 		a { float: left; }
+		iframe { margin-top: 1em; }
 	}
 	
 	
