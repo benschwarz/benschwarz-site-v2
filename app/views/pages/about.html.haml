@@ -61,7 +61,10 @@
   %section#past
     %h1 Past presentations
     %section#presentations
-      - for presentation in @presentations
-        %article
-          %a{href: presentation["link"], rel: "external"}
-            %h1=raw presentation["title"]
+      - if @presentations.any?
+        - for presentation in @presentations
+          %article
+            %a{href: presentation["link"], rel: "external"}
+              %h1=raw presentation["title"]
+      - else
+        %p Pinboard.in's API is out of action. <a href="http://pinboard.in/u:benschwarz/t:presentation/t:my-site" rel="external">Peruse my presentations</a>
